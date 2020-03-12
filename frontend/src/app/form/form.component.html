@@ -1,0 +1,53 @@
+<div class="col-lg-6">          
+  <form action="http://localhost:4000/game" method= "POST"  [formGroup]="userForm" (ngSubmit)="onSubmit()" id="callMeForm" data-toggle="validator" data-focus="false">
+      <div class="form-group" [ngClass]="{ 'has-error': invalidName() }" >
+        Name<input type="text" class="form-control-input" id="name" name="name" required>
+          <label class="label-control" for="name"></label>
+          
+      </div>
+      <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDept() }">
+        Department<input type="text" class="form-control-input" id="dept" name="dept" required>
+        <label class="label-control" for="dept"></label>
+        
+    </div>
+      <div class="form-group has-error" [ngClass]="{ 'has-error': invalidProject() }">
+        Project Name<input type="text" class="form-control-input" id="project" name="project" required>
+          <label class="label-control" for="project"></label>
+          <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDateFrom() }">
+        Date From<input type="date" class="form-control-input" id="datefrom" name="datefrom" required>
+          <label class="label-control" for="datefrom"></label>
+          <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDateTo() }">
+        Date To<input type="date" class="form-control-input" id="dateto" name="dateto" required>
+        <label class="label-control" for="dateto"></label>
+        <div class="help-block with-errors"></div>
+      </div>
+      <div class="form-group has-error" [ngClass]="{ 'has-error': invalidWip() }">
+        Work In Progress<input type="text" class="form-control-input" id="wip" name="wip" required>
+        <label class="label-control" for="wip"></label>
+        <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group has-error" [ngClass]="{ 'has-error': invalidKa() }">
+      Key Achievements<input type="text" class="form-control-input" id="ka" name="ka" required>
+      <label class="label-control" for="ka"></label>
+      <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group has-error" [ngClass]="{ 'has-error': invalidNexts() }">
+    Next Steps<input type="text" class="form-control-input" id="nexts" name="nexts" required>
+    <label class="label-control" for="nexts"></label>
+    <div class="help-block with-errors"></div>
+</div>
+      <div class="form-group">
+          <button type="submit" class="form-control-submit-button" id="mybutton">Generate</button>
+      </div>
+      <div class="form-group">
+        <button type="reset" class="form-control-submit-button">Clear</button>
+    </div>
+      <div class="form-message">
+          <div id="lmsgSubmit" class="h3 text-center hidden"></div>
+      </div>
+  </form>   
+</div> 
