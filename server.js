@@ -1,58 +1,54 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const port = 4000
-const pg = require('pg')
-const conString = 'postgres://postgres:Nivi@7492@localhost/myDB'
+ const express = require('express')
+ const bodyParser = require('body-parser')
+ const app = express()
+ const port = 4000
+ const db = require('./formsRoutes')
+
+app.use(bodyParser.urlencoded({extended:false}))
+app.set('view engine', 'ejs')
+app.use(express.static(__dirname + '/frontend/public'));
 
 
-app.post('/form', function (req, res, next) {
-  const user = req.body
+// function css(request, response) {
+//   if (request.url === '/styles.css') {
+//     response.writeHead(200, {'Content-type' : 'text/css'});
+//     var fileContents = fs.readFileSync('./public/css/styles.css', {encoding: 'utf8'});
+//     response.write(fileContents);
+//   }
+// }
 
-  pg.connect(conString, function (err, client, done) {
-    if (err) {
-      // pass the error to the express error handler
-      return next(err)
-    }
-    client.query('INSERT INTO form (name, dept, project, datefrom, dateto, wip, ka, nexts) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);', [form.name, form.dept, form.project, form.datefrom, form.dateto, form.wip, form.ka, form.nexts], function (err, result) {
-      done() //this done callback signals the pg driver that the connection can be closed or returned to the connection pool
+// function js(request, response) {
+//   if (request.url === '/form.js') {
+//     response.writeHead(200, {'Content-type' : 'text/js'});
+//     var fileContents = fs.readFileSync('./public/js/form.js', {encoding: 'utf8'});
+//     response.write(fileContents);
+//   }
+// }
 
-      if (err) {
-        // pass the error to the express error handler
-        return next(err)
-      }
+app.get('/frontend/public/css/styles.css', function(req,res) {
+  res.sendFile('/frontend/public/css/style.css',{ root: __dirname})
+ });
 
-      res.send(200)
-    })
+ app.get('/frontend/public/js/form.js', function(req,res) {
+  res.sendFile('/frontend/public/js/form.js',{ root: __dirname})
+ });
+
+ app.get('/', function(req,res) {
+  res.sendFile('/frontend/src/app/form/form.component.html',{ root: __dirname})
+ });
+ app.get('/formshow', function(req,res) {
+  res.sendFile('/index.html',{ root: __dirname})
+ });
+
+
+app.get('/form', db.getUsers)
+app.post('/formcreate', db.createUser)
+app.get('/formshows', db.formtable)
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}`)
   })
-})
-// //const db = require('./formsRoutes')
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({extended: true}))
-// //app.use(express.static(__dirname +'/form/form.component.html'))
 
-// app.get('/formall', (req,res) => {
-//   res.render('/frontend/form')
-// });
 
-// const users = []
 
-// app.post('/users', function (req, res) {
-//     // retrieve user posted data from the body
-//     const user = req.body
-//     users.push({
-//       name: user.name,
-//       dept: user.dept,
-//       project: user.project,
-//       datefrom: user.datefrom,
-//       dateto: user.dateto,
-//       wip: user.wip,
-//       ka: user.ka,
-//       nexts: user.nexts
-//     })
-//     res.send('successfully registered')
-// })
 
-//   app.listen(port, () => {
-//     console.log(`App running on port ${port}`)
-//   })

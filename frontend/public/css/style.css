@@ -1,4 +1,4 @@
-You can add global styles to this file, and also import other style files
+/* You can add global styles to this file, and also import other style files */
 .header {
     overflow: hidden;
     background-color: #f1f1f1;
@@ -22,6 +22,11 @@ You can add global styles to this file, and also import other style files
   
   .header-right {
     float: right;
+  }
+
+  .header h1{
+    text-align: center;
+    font-size: 45px;
   }
   .home .wrapper {
     text-align: center;

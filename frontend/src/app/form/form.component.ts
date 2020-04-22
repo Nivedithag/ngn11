@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-
+declare const getDate:any;
 
 @Component({
   selector: 'app-form',
@@ -8,15 +8,19 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  onClick() {
+    getDate();
+  }
 
   registered = false;
 	submitted = false;
-	userForm: FormGroup;
-
+  userForm: FormGroup;
+  
   constructor(private formBuilder: FormBuilder)
   {
 
   }
+  
   invalidName()
   {
   	return (this.submitted && this.userForm.controls.name.errors != null);
@@ -76,4 +80,6 @@ onSubmit()
   	}
   }
 
+
 }
+  

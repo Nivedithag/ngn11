@@ -1,27 +1,75 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+  <div class="header">
+    <a href="#default" class="logo"><img src="images/favicon.png" alt="alternative"></a>
+    <h1> WEEKLY UPDATE REPORT </h1>
+    
+  </div>
 <div class="col-lg-6">          
-  <form action="http://localhost:4000/game" method= "POST"  [formGroup]="userForm" (ngSubmit)="onSubmit()" id="callMeForm" data-toggle="validator" data-focus="false">
+  <form method="POST" action="/formcreate" id="callMeForm" data-toggle="validator" data-focus="true" autocomplete="off">
       <div class="form-group" [ngClass]="{ 'has-error': invalidName() }" >
-        Name<input type="text" class="form-control-input" id="name" name="name" required>
-          <label class="label-control" for="name"></label>
+        Name<label class="label-control" for="name"> </label>
+          <input list="users" class="form-control-input" id="name" name="name" required >       
+        <datalist id="users">
+          <option value="Amit Bhatia">
+          <option value="Udaykumar Shetty">
+          <option value="Dheeraj Sharma">
+          <option value="Atul Deshpande">
+          <option value="Kapil Gupta">
+          <option value="Narendra Choppa">
+          <option value="Sujit Shodangi">
+          <option value="Alban Daniel">
+          <option value="Ritesh Anand">
+          <option value="Niveditha G">
+          <option value="Pratik Kumar">
+          <option value="Avijith Jana">
+          <option value="Neelabhro Roy">
+          <option value="Sumidha Sethi">
+          <option value="Apoorv Anupam">
+          <option value="Sandeep CS">
+          <option value="Bipin Gowda">
+          <option value="Piyush Gautam">
+          <option value="Varun K">
+          <option value="Swathi Krishnan">
+          <option value="Mahalakshmi L">
+          <option value="Koushik Ma">
+          <option value="Shivkumar V">
+          <option value="Amit Yadav">
+        </datalist>
+          
           
       </div>
       <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDept() }">
-        Department<input type="text" class="form-control-input" id="dept" name="dept" required>
+        Department<input list="depat" class="form-control-input" id="dept" name="dept" required>
         <label class="label-control" for="dept"></label>
+         <datalist id="depat">
+          <option value="MNO">
+            <option value="SXC">
+
+          </datalist>
         
     </div>
       <div class="form-group has-error" [ngClass]="{ 'has-error': invalidProject() }">
-        Project Name<input type="text" class="form-control-input" id="project" name="project" required>
+        Project Name<input list="proj" class="form-control-input" id="project" name="project" required>
           <label class="label-control" for="project"></label>
           <div class="help-block with-errors"></div>
+          <datalist id="proj">
+            <option value="IOT">
+            <option value="OpenNESS">
+            <option value="Kubernetes">
+            <option value="Networking">            
+            </datalist>
       </div>
       <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDateFrom() }">
-        Date From<input type="date" class="form-control-input" id="datefrom" name="datefrom" required>
+        Date From<input type="date" date="false" (click)="onClick()" class="form-control-input" id="datefrom" name="datefrom" required>
           <label class="label-control" for="datefrom"></label>
           <div class="help-block with-errors"></div>
       </div>
       <div class="form-group has-error" [ngClass]="{ 'has-error': invalidDateTo() }">
-        Date To<input type="date" class="form-control-input" id="dateto" name="dateto" required>
+        Date To<input type="date" onload="getDate()" class="form-control-input" id="dateto" name="dateto" required>
         <label class="label-control" for="dateto"></label>
         <div class="help-block with-errors"></div>
       </div>
@@ -39,15 +87,28 @@
     Next Steps<input type="text" class="form-control-input" id="nexts" name="nexts" required>
     <label class="label-control" for="nexts"></label>
     <div class="help-block with-errors"></div>
-</div>
+  </div>
       <div class="form-group">
-          <button type="submit" class="form-control-submit-button" id="mybutton">Generate</button>
+        <button type="submit" class="form-control-submit-button" href="#index.html">PREVIEW</button>
+        
       </div>
-      <div class="form-group">
+     <div class="form-group">
         <button type="reset" class="form-control-submit-button">Clear</button>
     </div>
       <div class="form-message">
           <div id="lmsgSubmit" class="h3 text-center hidden"></div>
       </div>
-  </form>   
+  </form>
+  <!-- <form method="GET" action="/formshow">
+  <div class="form-group">
+      <button type="submit" class="form-control-submit-button" href="#index.html">PREVIEW</button>
+  </div>  
+</form>  -->
+  <!-- <form method="GET" action="/form">
+  <div class="form-group">
+    <button type="submit" class="form-control-submit-button">DOWNLOAD</button>
+  </div> 
+</form> -->
 </div> 
+</body>
+</html>

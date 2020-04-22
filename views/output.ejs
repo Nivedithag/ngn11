@@ -1,0 +1,49 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<table>
+    <tr>
+    <th id="sino">SL NO</th>
+    <th id="name">Name</th>
+    <th id="dept">Department</th>
+    <th id="project">Project</th>
+    <th id="datefrom">Date From</th>
+    <th id="dateto">Date To</th>
+    <th id="wip">Work In Progress</th>
+    <th id="ka">Key Achievements</th>
+    <th id="nexts">Next Steps</th>
+    </tr>
+    <% if(results.length){ 
+        for(var i = 0;i < results.length;i++) { %>
+  <tr>
+    <td><%=(i+1)%></td>
+    <td><%=results[i].name%></td>
+    <td><%=results[i].dept%></td>
+    <td><%=results[i].project%></td>
+    <td><%=results[i].datefrom%></td>
+    <td><%=results[i].dateto%></td>
+    <td><%=results[i].wip%></td>
+    <td><%=results[i].ka%></td>
+    <td><%=results[i].nexts%></td>
+        
+        
+    </tr>
+    <% }
+    }else{ %>
+    <tr>
+      <td colspan="3">No user</td>
+    </tr>
+  
+    <% } %>
+    <td><form action="/formcreate" method= "POST" >
+      <div class="form-group">
+        <button type="submit" id="mybutton" (click)="ClickButton()">Submit</button>
+      </div> 
+    </form>
+   </td>
+    <td><input type="submit" name="deleteBtn" id="deleteBtn" value="delete" ></td>
+    
+</table>
+
+</html>

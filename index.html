@@ -1,0 +1,42 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<div class="col-lg-6">
+ <form action="/formshows" method= "GET" autocomplete="off">
+<div class="form-group" [ngClass]="{ 'has-error': invalidName() }" >
+    Select Name<label class="label-control" for="name"> </label>
+      <input list="users" class="form-control-input" id="name" name="name" required >       
+    <datalist id="users">
+      <option value="Amit Bhatia">
+      <option value="Udaykumar Shetty">
+      <option value="Dheeraj Sharma">
+      <option value="Atul Deshpande">
+      <option value="Kapil Gupta">
+      <option value="Narendra Choppa">
+      <option value="Sujit Shodangi">
+      <option value="Alban Daniel">
+      <option value="Ritesh Anand">
+      <option value="Niveditha G">
+      <option value="Pratik Kumar">
+      <option value="Avijith Jana">
+      <option value="Neelabhro Roy">
+      <option value="Sumidha Sethi">
+      <option value="Apoorv Anupam">
+      <option value="Sandeep CS">
+      <option value="Bipin Gowda">
+      <option value="Piyush Gautam">
+      <option value="Varun K">
+      <option value="Swathi Krishnan">
+      <option value="Mahalakshmi L">
+      <option value="Koushik Ma">
+      <option value="Shivkumar V">
+      <option value="Amit Yadav">
+    </datalist>         
+  </div>
+  <div class="form-group">
+    <button type="submit" class="form-control-submit-button">Submit</button>  
+</div>
+</form> 
+</div>
+</html>
